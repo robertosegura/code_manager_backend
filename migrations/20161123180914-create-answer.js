@@ -9,13 +9,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       answer: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       code: {
         type: Sequelize.TEXT
       },
       question_id: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Questions',
+          key: 'id'
+        }
       },
       created_at: {
         allowNull: false,

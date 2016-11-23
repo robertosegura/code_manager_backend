@@ -9,10 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       question: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       category_id: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categories',
+          key: 'id'
+        }
       },
       created_at: {
         allowNull: false,
