@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 // requiring routes
 var projects = require('./routes/projects');
+var categories = require('./routes/categories');
 
 var app = express();
 
@@ -19,8 +20,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// require a valid content type
+app.use('/api/v1/', function(req, res, next) {
+  var contentType = req.headers['content-type'];
+  if (!contentType || contentType.indexOf('application/json') !== 0) {
+    return res.send(400);
+  }
+  next();
+});
+
+
 // mapping routes
-app.use('/projects', projects);
+app.use('/api/v1', projects);
+app.use('/api/v1', categories);
 
 
 // catch 404 and forward to error handler
