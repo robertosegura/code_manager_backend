@@ -6,8 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // requiring routes
-var projects = require('./routes/projects');
-var categories = require('./routes/categories');
+var projects    = require('./routes/projects');
+var categories  = require('./routes/categories');
+var questions   = require('./routes/questions');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/v1/', function(req, res, next) {
 // mapping routes
 app.use('/api/v1', projects);
 app.use('/api/v1', categories);
+app.use('/api/v1', questions);
 
 
 // catch 404 and forward to error handler
