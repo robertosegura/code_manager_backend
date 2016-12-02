@@ -1,9 +1,6 @@
 /**
  * Created by Margaritow on 01/12/2016.
  */
-/**
- * Created by Margaritow on 01/12/2016.
- */
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
